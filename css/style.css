@@ -14,7 +14,6 @@ body {
 	background-color: var(--dark-blue);
 	font-family: 'Manrope', sans-serif;
 }
-/* Font size (quote): 28px */
 
 .container {
 	padding: 0 15px;
@@ -77,4 +76,28 @@ body {
 }
 
 @media (min-width: 576px) {
+	.advice-box {
+		max-width: 530px;
+		padding: 40px;
+		border-radius: 15px;
+	}
+
+	.advice-box__heading {
+		padding-bottom: 30px;
+	}
+
+	.advice-box__content {
+		font-size: 28px;
+	}
+
+	.advice-box__pattern-divider {
+		padding-top: 30px;
+	}
+
+	.advice-box__button {
+		width: 60px;
+		height: 60px;
+		bottom: -30px;
+		left: calc(50% - 30px);
+	}
 }
