@@ -10,17 +10,20 @@ document.addEventListener('DOMContentLoaded', fetchAdviceAndRenderToDOM);
 button.addEventListener('click', fetchAdviceAndRenderToDOM);
 
 async function fetchAdviceAndRenderToDOM() {
-	const data = await fetch(endpoint).then((response) => response.json());
-	const newId = data.slip.id;
-	// If return same advice
-	if (id && newId === id) {
+	const randomID = randomInteger(1, 224);
+	if (id && randomID === id) {
 		return fetchAdviceAndRenderToDOM();
 	}
-	// If not, then...
+	const data = await fetch(`${endpoint}/${randomID}`).then((response) => response.json());
+	// Extract advice content
 	const advice = data.slip.advice;
 	// Render to DOM
 	content.innerHTML = `“${advice}”`;
-	adviceId.innerHTML = newId;
+	adviceId.innerHTML = randomID;
 	// Set current id
-	id = newId;
+	id = randomID;
+}
+
+function randomInteger(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
